@@ -151,6 +151,8 @@ function(input, output, session) {
       lat4 <- post2loc$med_lat[id4]
       
       # calculate the distance and carbon footprint
+      # WARNING: This is only a rough estimation, as the package takes all public transporations as "transit"
+      # and it doesn't have an option of plane. I will try to find better code for this purpose in the future.
       if ((transp=="bus") | (transp=="train") | (transp=="plane")) {transp0 <- "transit"}
       if (transp=="walk") {transp0 <- "walking"}
       if (transp=="cycle") {transp0 <- "bicycling"}
