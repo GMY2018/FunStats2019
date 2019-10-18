@@ -8,10 +8,6 @@ library(maps)
 
 
 
-## -----------------------
-## The user interface
-## -----------------------
-
 fluidPage(
   
   ## (1) The header and the data input section
@@ -75,14 +71,14 @@ fluidPage(
     column(10,
            tabsetPanel(
              
-             ## The 1st panel
+             ## The 1st panel: a data table displaying the data collected
              tabPanel("Visitors' survey",  
                       column(1),
                       column(10, dataTableOutput("newdat")),
                       column(1)),
              
              
-             ## The 2nd panel
+             ## The 2nd panel: a piechart and a boxplot showing the choices of transportation methods
              tabPanel("Data analysis",
                       column(2,
                              br(),
@@ -108,7 +104,7 @@ fluidPage(
                              )),
              
              
-             ## The 3rd panel
+             ## The 3rd panel: the carbon footprint info, a histogram and some fun fact
              tabPanel("Carbon footprint",  
                       column(3, 
                              br(),
@@ -146,7 +142,6 @@ fluidPage(
     
     column(1)
   )
-  
   
 ## end of fluid page
 )
