@@ -9,7 +9,4 @@ It takes basic travel information from visitors, and then produce a rough estima
 
   shiny, leaflet, maps, rgeos, geosphere, gmapsdistance, stringr, rdrop2
 
-* You will also need a Google map API key. You can request this from Google (https://developers.google.com/maps/gmp-get-started). 
-  The free version should cover enough enquires of travel distance (thousands of euquires a month) for general useage. 
-
-* After all this is done, type runGitHub(repo='FunStats2019', username='GMY2018') to run the app.
+* You will also need a Google map API key to replace the one in the script. You can request this from Google (https://developers.google.com/maps/gmp-get-started). The free version should cover enough enquires of travel distance (thousands of euquires a month) for general useage. 
