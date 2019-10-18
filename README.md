@@ -11,6 +11,6 @@ https://rapp-m.shinyapps.io/FunStats/
 
 shiny, leaflet, maps, rgeos, geosphere, gmapsdistance, stringr, rdrop2
 
-* You will also need a Google map API key. You can aquire this from Google and the free version should cover enough enquires (thousands of euquires a month) for general useage. Having your own API key allows you to build your own apps of similar functions. 
+* You will also need a Google map API key. You can request this from Google (https://developers.google.com/maps/gmp-get-started) and the free version should cover enough enquires of travel distance (thousands of euquires a month) for general useage. 
 
 * After all this is done, type runGitHub(repo='FunStats2019', username='GMY2018') to run the app.
