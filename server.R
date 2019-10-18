@@ -17,8 +17,8 @@ library(rdrop2)
 ## Get the essential matrices, vectors, etc
 ## -------------------------------------------
 
-## set the directory for saving and reading data
-outputDir <- "update"  # for local use
+## set the directory for saving and reading data (local use only)
+outputDir <- "update"
 
 
 ## load the volunteer data
@@ -26,9 +26,12 @@ basedata.ini <- readRDS("basedata0.rds")  # for testing
 basedata.ini <- basedata.ini[, -4]
 
 
-## load the postcode data and CF factors
+## load the postcode data and carbon footpring conversion factors
 post2loc <- readRDS("partialpost.rds")
 CF.vec <- readRDS("CFfactor.rds")
+# WARNING: The conversion factors are taken from different documents produced in different years,
+# so some data might be outdated. It is not a big problem for demonstration, but you might wish to 
+# update the CF.vec for better estimation.
 
 
 ## define an object for storing reactive values
@@ -47,7 +50,7 @@ for (i in 1:nrow(basedata.ini)) {
 }
 
 
-## set a few nice colors
+## choose a few nice colors
 mycolor <- c("#195D94", "#5186B1", "#548E1B", "#94C622", "#FFC300", "#EE6D2D")
 # slategray (light): #859AB8
 # slategray (dark): #29528E
@@ -57,7 +60,7 @@ mycolor <- c("#195D94", "#5186B1", "#548E1B", "#94C622", "#FFC300", "#EE6D2D")
 # brown3: #A5151E
 
 
-## set Google API (you might wish to register for your own)
+## set Google API (you might need to register to get your own)
 set.api.key("AIzaSyA6051uiw89Uxx3RqmS-Fzqrmfyn-xxx-x")
 
 
@@ -87,7 +90,7 @@ function(input, output, session) {
     leaflet::addPolylines(data=curve.ini, weight=2, color="#5C7FB4")
   
   
-  ## (2) add popups and curves when new visitor comes
+  ## (2) Add popups and curves when new visitors come
   
   visitor <- eventReactive(input$update, {
     post4 <- input$post4
@@ -273,7 +276,7 @@ function(input, output, session) {
     })
     
     output$speed <- renderText({
-      # 1674.4 km/h (source: Wikipaedia)
+      # Earth rotation speed used here is 1674.4 km/h (source: Wikipaedia)
       earch.sp1 <- cos(52/180*pi) * 1674.4 / 3.6  # UK speed (m/s)
       # earch.sp2 <- cos(0/180*pi) * 1674.4 / 3.6  # equator speed (m/s)
       earth.t <- (dist * 1609.34 / earch.sp1) / 60  # time in minutes
@@ -285,11 +288,10 @@ function(input, output, session) {
   })
   
   
-  ## (7) The reset button (for remove the last record if incorrectly submitted)
+  ## (7) The reset button (for remove the last record if you submitted a wrong record)
   
   observeEvent(input$reset, {
     basedata$mat <- basedata$mat[-nrow(basedata$mat), ]
-    drop_delete(file.path(outputDir, fileName$name))
   })
 
 }
