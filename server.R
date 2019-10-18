@@ -58,7 +58,7 @@ mycolor <- c("#195D94", "#5186B1", "#548E1B", "#94C622", "#FFC300", "#EE6D2D")
 
 
 ## set Google API (you might wish to register for your own)
-set.api.key("AIzaSyA6051uiw89Uxx3RqmS-Fzqrmfyn-pA4-Q")
+set.api.key("AIzaSyA6051uiw89Uxx3RqmS-Fzqrmfyn-xxx-x")
 
 
 
